@@ -7,25 +7,25 @@ const PORT = 8080;
 app.use(express.json());
 
 
-app.get('/tshirt',(req, res)=>{
+app.get('/user',(req, res)=>{
     res.status(200).send(
-       [ {
+        {
          tshirt:'👕',
          size: 'larger',
          style: 'slimfit'
-    }]
+    }
     )
 });
 
 app.post(
-    '/tshirt/:id',(req, res)=>{
+    '/user/:id',(req, res)=>{
      const {id } = req.params;  
-     const {logo} = req.body;
-     if(!logo){
+     const {username} = req.body;
+     if(!username){
          res.status(418).send({message: 'We require a logo from you in the body'})
      }
      res.send({
-         tshirt: `👕 with your ${logo} and ID of ${id}`,
+         user: `👕 your username has been updated to ${username} and ID of ${id}`,
      });
     })
 
